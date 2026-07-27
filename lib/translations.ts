@@ -5,7 +5,7 @@ export const translations = {
     header: {
       locationTag: "PORT GHALIB | 25°32'N 34°38'E",
       exclusivityTag: "| ARCHITECTURAL EXCLUSIVITY",
-      role: "Larimar Manager",
+      role: "Larimar Sales Manager",
       navOverview: "Overview",
       navProjects: "Projects",
       navOffices: "Offices",
@@ -140,7 +140,7 @@ export const translations = {
     header: {
       locationTag: "PORT GHALIB | 25°32'N 34°38'E",
       exclusivityTag: "| ARCHITEKTONISCHE EXKLUSIVITÄT",
-      role: "Larimar Manager",
+      role: "Larimar Sales Manager",
       navOverview: "Übersicht",
       navProjects: "Projekte",
       navOffices: "Büros",
