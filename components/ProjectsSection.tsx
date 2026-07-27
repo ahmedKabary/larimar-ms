@@ -42,7 +42,7 @@ export default function ProjectsSection() {
             {/* Image Side (Left 6 cols) */}
             <div className="lg:col-span-6 relative min-h-[380px] lg:min-h-[500px]">
               <ImageWithLoader
-                src="/images/larimar-villas.png"
+                src="/images/larimar-villas.jpg"
                 alt="Larimar Villas Port Ghalib"
                 fill
                 className="object-cover"
@@ -200,7 +200,7 @@ export default function ProjectsSection() {
             {/* Image Side (Right 6 cols) */}
             <div className="lg:col-span-6 relative min-h-[380px] lg:min-h-[500px] order-1 lg:order-2">
               <ImageWithLoader
-                src="/images/larimar-suites.png"
+                src="/images/larimar-suites.jpg"
                 alt="Larimar Suites Port Ghalib"
                 fill
                 className="object-cover"
@@ -222,7 +222,7 @@ export default function ProjectsSection() {
             {/* Image Side (Left 6 cols) */}
             <div className="lg:col-span-6 relative min-h-[380px] lg:min-h-[500px]">
               <ImageWithLoader
-                src="/images/larimar-3.png"
+                src="/images/larimar-3.jpg"
                 alt="Larimar 3 Port Ghalib"
                 fill
                 className="object-cover"
