@@ -58,7 +58,7 @@ export default function OfficesSection() {
 
             <div className="pt-6 border-t border-[#E8E2D9] flex items-center justify-end text-xs font-mono">
               <a
-                href="https://maps.app.goo.gl/hrk19Afs5kYowikW6"
+                href="https://maps.app.goo.gl/n8C5vkJfHQEzXdpZ9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded bg-[#1C1917] hover:bg-[#C85A32] text-white font-bold flex items-center gap-1.5 transition-colors"
