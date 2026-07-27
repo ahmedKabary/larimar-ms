@@ -6,7 +6,7 @@ import { ImageWithLoader } from "./ImageWithLoader";
 import { WhatsappIcon } from "./WhatsappIcon";
 
 export default function ProjectsSection() {
-  const [selectedSuiteUnit, setSelectedSuiteUnit] = useState<string>("Garden 1-Bed");
+  const [selectedSuiteUnit, setSelectedSuiteUnit] = useState<string>("Studio");
 
   const SUITES_UNITS = [
     { name: "Studio", indoorArea: "55 m²", outdoorArea: "—", totalArea: "55 m²", description: "Turnkey open-plan luxury layout with fitted kitchen and AC." },
@@ -270,8 +270,18 @@ export default function ProjectsSection() {
                 </div>
               </div>
 
-
-
+              {/* Action Callout */}
+              <div className="pt-4 border-t border-[#E8E2D9] flex flex-wrap gap-4 items-center justify-end">
+                <a
+                  href="https://wa.me/201005532941?text=Hello%20Mohamed,%20I'm%20interested%20in%20Larimar%203."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded bg-[#1C1917] hover:bg-[#36322E] text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all shadow"
+                >
+                  <WhatsappIcon className="w-4 h-4" />
+                  Inquire Larimar 3 Pricing
+                </a>
+              </div>
             </div>
 
           </div>
