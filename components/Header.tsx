@@ -15,9 +15,9 @@ function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
       <button
         onClick={() => setLanguage(language === "en" ? "de" : "en")}
         aria-label="Toggle Language"
-        className="px-2.5 py-1 text-xs font-mono font-bold rounded bg-[#C85A32] text-white shadow-sm hover:bg-[#B44B24] transition-all flex items-center gap-1"
+        className="px-2 py-1 text-sm rounded bg-[#C85A32] text-white shadow-sm hover:bg-[#B44B24] transition-all flex items-center justify-center"
       >
-        {language === "en" ? "🇬🇧 EN" : "🇩🇪 DE"}
+        {language === "en" ? "🇬🇧" : "🇩🇪"}
       </button>
     );
   }
