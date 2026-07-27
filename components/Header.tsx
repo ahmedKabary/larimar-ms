@@ -7,8 +7,20 @@ import { ImageWithLoader } from "./ImageWithLoader";
 
 import { useLanguage } from "@/context/LanguageContext";
 
-function LanguageSwitcher() {
+function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   const { language, setLanguage } = useLanguage();
+
+  if (compact) {
+    return (
+      <button
+        onClick={() => setLanguage(language === "en" ? "de" : "en")}
+        aria-label="Toggle Language"
+        className="px-2.5 py-1 text-xs font-mono font-bold rounded bg-[#C85A32] text-white shadow-sm hover:bg-[#B44B24] transition-all flex items-center gap-1"
+      >
+        {language === "en" ? "🇬🇧 EN" : "🇩🇪 DE"}
+      </button>
+    );
+  }
 
   return (
     <div className="flex items-center bg-[#E8E2D9]/70 p-0.5 rounded border border-[#E8E2D9]">
@@ -124,7 +136,7 @@ export default function Header() {
 
         {/* Mobile menu toggle & switcher */}
         <div className="flex items-center gap-2 sm:hidden">
-          <LanguageSwitcher />
+          <LanguageSwitcher compact />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-[#1C1917] hover:text-[#C85A32]"
@@ -153,7 +165,7 @@ export default function Header() {
         <div className="space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-[#E8E2D9]">
             <span className="text-xs font-mono text-[#6E6459] font-bold uppercase">Language / Sprache:</span>
-            <LanguageSwitcher />
+            <LanguageSwitcher compact />
           </div>
           <a
             href="#overview"
