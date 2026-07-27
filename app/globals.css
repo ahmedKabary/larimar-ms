@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF8F5;
+  --foreground: #1C1917;
+  --terracotta: #C85A32;
+  --sand-gold: #C59B27;
+  --sea-turquoise: #0A8491;
+  --warm-cream: #FFFDF9;
+  --card-border: #E8E2D9;
+}
+
+body {
+  background-color: #FAF8F5;
+  color: #1C1917;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Blueprint Grid & Brick Wall Architectural Background Patterns */
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(200, 90, 50, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(200, 90, 50, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-blueprint-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(10, 132, 145, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 132, 145, 0.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Brick Wall Texture Pattern Overlay */
+.bg-brick-pattern {
+  background-image: radial-gradient(#C85A32 0.75px, transparent 0.75px), radial-gradient(#C85A32 0.75px, #FAF8F5 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.15;
+}
+
+/* Architectural Card elevation with masonry border ticks */
+.arch-card {
+  background: rgba(255, 253, 249, 0.95);
+  border: 1px solid #E5DFD5;
+  box-shadow: 0 10px 30px -10px rgba(28, 25, 23, 0.05), 0 2px 6px rgba(200, 90, 50, 0.04);
+  position: relative;
+}
+
+.arch-card-brick {
+  background: #FFFDF9;
+  border-left: 4px solid #C85A32;
+  border-top: 1px solid #E8E2D9;
+  border-right: 1px solid #E8E2D9;
+  border-bottom: 1px solid #E8E2D9;
+}
+
+/* Drafting corner marks */
+.corner-tick-tl::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #C85A32;
+  border-left: 2px solid #C85A32;
+}
+
+.corner-tick-br::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #0A8491;
+  border-right: 2px solid #0A8491;
+}
+
+/* Custom Ruler ticks for architectural aesthetic */
+.ruler-border {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #C85A32,
+    #C85A32 1px,
+    transparent 1px,
+    transparent 12px
+  );
+  height: 6px;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4C9B8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C85A32;
+}
+
+/* Hide scrollbar for elements with the .scrollbar-hide class */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
