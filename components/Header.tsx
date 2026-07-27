@@ -5,8 +5,42 @@ import { Phone, Mail, Menu, X } from "lucide-react";
 import { WhatsappIcon } from "./WhatsappIcon";
 import { ImageWithLoader } from "./ImageWithLoader";
 
+import { useLanguage } from "@/context/LanguageContext";
+
+function LanguageSwitcher() {
+  const { language, setLanguage } = useLanguage();
+
+  return (
+    <div className="flex items-center bg-[#E8E2D9]/70 p-0.5 rounded border border-[#E8E2D9]">
+      <button
+        onClick={() => setLanguage("en")}
+        aria-label="Switch to English"
+        className={`px-2 py-1 text-xs font-mono font-bold rounded transition-all ${
+          language === "en"
+            ? "bg-[#C85A32] text-white shadow-sm"
+            : "text-[#6E6459] hover:text-[#1C1917]"
+        }`}
+      >
+        🇬🇧 EN
+      </button>
+      <button
+        onClick={() => setLanguage("de")}
+        aria-label="Switch to German"
+        className={`px-2 py-1 text-xs font-mono font-bold rounded transition-all ${
+          language === "de"
+            ? "bg-[#C85A32] text-white shadow-sm"
+            : "text-[#6E6459] hover:text-[#1C1917]"
+        }`}
+      >
+        🇩🇪 DE
+      </button>
+    </div>
+  );
+}
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50">
@@ -15,10 +49,10 @@ export default function Header() {
         <div className="bg-[#1C1917] text-[#FAF8F5] text-xs py-1.5 px-4 sm:px-8 flex justify-between items-center font-mono">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1.5 text-[#D4AF37]">
-            PORT GHALIB | 25°32&apos;N 34°38&apos;E
+            {t.header.locationTag}
           </span>
           <span className="hidden md:inline text-[#A89F91]">
-            | ARCHITECTURAL EXCLUSIVITY
+            {t.header.exclusivityTag}
           </span>
         </div>
         <div className="flex items-center gap-6">
@@ -53,7 +87,7 @@ export default function Header() {
           </div>
           <div>
             <div className="font-mono text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1">
-              Larimar Supervisor
+              {t.header.role}
             </div>
             <h1 className="text-xl font-bold tracking-tight text-[#1C1917]">
               Mohamed Sharawi
@@ -64,18 +98,19 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-[#4A443E]">
           <a href="#overview" className="hover:text-[#C85A32] transition-colors flex items-center gap-1">
-            Overview
+            {t.header.navOverview}
           </a>
           <a href="#projects" className="hover:text-[#C85A32] transition-colors flex items-center gap-1">
-            Projects
+            {t.header.navProjects}
           </a>
           <a href="#offices" className="hover:text-[#C85A32] transition-colors">
-            Offices
+            {t.header.navOffices}
           </a>
         </nav>
 
-        {/* Action CTA */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Action CTA & Language Switcher */}
+        <div className="hidden sm:flex items-center gap-4">
+          <LanguageSwitcher />
           <a
             href="https://wa.me/201005532941?text=Hello%20Mohamed,%20I'm%20interested%20in%20Larimar%20Port%20Ghalib%20properties."
             target="_blank"
@@ -87,10 +122,21 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile menu toggle & switcher */}
+        <div className="flex items-center gap-2 sm:hidden">
+          <LanguageSwitcher />
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-[#1C1917] hover:text-[#C85A32]"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+        
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 text-[#1C1917] hover:text-[#C85A32]"
+          className="hidden sm:block lg:hidden p-2 text-[#1C1917] hover:text-[#C85A32]"
           aria-label="Toggle Menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -105,19 +151,23 @@ export default function Header() {
         }`}
       >
         <div className="space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E8E2D9]">
+            <span className="text-xs font-mono text-[#6E6459] font-bold uppercase">Language / Sprache:</span>
+            <LanguageSwitcher />
+          </div>
           <a
             href="#overview"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-base font-semibold text-[#1C1917] hover:text-[#C85A32]"
           >
-            Overview
+            {t.header.navOverview}
           </a>
           <a
             href="#projects"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-base font-semibold text-[#1C1917] hover:text-[#C85A32]"
           >
-            Larimar Projects
+            {t.header.mobileNavProjects}
           </a>
 
           <a
@@ -125,7 +175,7 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(false)}
             className="block text-base font-semibold text-[#1C1917] hover:text-[#C85A32]"
           >
-            Office
+            {t.header.mobileNavOffices}
           </a>
           <div className="pt-4 border-t border-[#E8E2D9] flex flex-col gap-3">
             <a
@@ -134,13 +184,13 @@ export default function Header() {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 py-3 rounded bg-[#25D366] text-white font-bold text-sm"
             >
-              <WhatsappIcon className="w-5 h-5 fill-white text-[#25D366]" /> Direct WhatsApp Consultation
+              <WhatsappIcon className="w-5 h-5 fill-white text-[#25D366]" /> {t.header.whatsappConsultation}
             </a>
             <a
               href="tel:+201005532941"
               className="flex items-center justify-center gap-2 py-3 rounded bg-[#1C1917] text-white font-bold text-sm"
             >
-              <Phone className="w-4 h-4 text-[#D4AF37]" /> Call +20 100 553 2941
+              <Phone className="w-4 h-4 text-[#D4AF37]" /> {t.header.callUs}
             </a>
           </div>
         </div>

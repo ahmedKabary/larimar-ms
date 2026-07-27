@@ -4,7 +4,11 @@ import React from "react";
 import { ImageWithLoader } from "./ImageWithLoader";
 
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function ArchitecturalFeatureBanner() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-20 bg-[#F4F7FA] border-y border-[#D1DBE5] relative overflow-hidden">
       
@@ -38,10 +42,8 @@ export default function ArchitecturalFeatureBanner() {
             </div>
 
             <p className="text-base sm:text-xl text-[#334155] leading-relaxed font-medium">
-              Your dedicated Sales Supervisor for exclusive properties at <strong className="text-[#C85A32]">Larimar</strong> — Port Ghalib&apos;s most prestigious luxury resort community on Egypt&apos;s Red Sea coast.
+              {t.banner.text1} <strong className="text-[#C85A32]">Larimar</strong> {t.banner.text2}
             </p>
-
-
 
           </div>
 

@@ -4,7 +4,11 @@ import React from "react";
 import { ArrowUp } from "lucide-react";
 import { ImageWithLoader } from "./ImageWithLoader";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -27,11 +31,11 @@ export default function Footer() {
 
         {/* Minimal Navigation */}
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-mono font-bold text-[#A89F91] mb-12 uppercase tracking-wider">
-          <a href="#overview" className="hover:text-white transition-colors">Overview</a>
-          <a href="#projects" className="hover:text-white transition-colors">Villas</a>
-          <a href="#suites-specs" className="hover:text-white transition-colors">Suites</a>
+          <a href="#overview" className="hover:text-white transition-colors">{t.header.navOverview}</a>
+          <a href="#projects" className="hover:text-white transition-colors">Larimar Villas</a>
+          <a href="#suites-specs" className="hover:text-white transition-colors">Larimar Suites</a>
           <a href="#projects" className="hover:text-white transition-colors">Larimar 3</a>
-          <a href="#offices" className="hover:text-white transition-colors">Offices</a>
+          <a href="#offices" className="hover:text-white transition-colors">{t.header.navOffices}</a>
         </div>
 
         {/* Bottom Bar */}
@@ -40,7 +44,7 @@ export default function Footer() {
             onClick={scrollToTop}
             className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors group"
           >
-            <span>Back to Top</span>
+            <span>↑ {t.header.navOverview}</span>
             <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>

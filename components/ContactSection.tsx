@@ -7,14 +7,10 @@ import { FacebookIcon } from "./FacebookIcon";
 import { InstagramIcon } from "./InstagramIcon";
 import { YoutubeIcon } from "./YoutubeIcon";
 
-const PROJECT_OPTIONS = [
-  { value: "villas", label: "Larimar Villas" },
-  { value: "suites", label: "Larimar Suites" },
-  { value: "l3", label: "Larimar 3" },
-  { value: "all", label: "All Projects — General Inquiry" }
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     contactInfo: "",
@@ -25,6 +21,13 @@ export default function ContactSection() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const projectOptions = [
+    { value: "villas", label: t.contact.optVillas },
+    { value: "suites", label: t.contact.optSuites },
+    { value: "l3", label: t.contact.optL3 },
+    { value: "all", label: t.contact.optAll }
+  ];
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -33,7 +36,9 @@ export default function ContactSection() {
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);  const handleSubmit = (e: React.FormEvent) => {
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Trigger confetti celebration
@@ -68,7 +73,7 @@ export default function ContactSection() {
             
             <div className="space-y-2">
               <h2 className="text-3xl sm:text-4xl font-black text-[#1C1917] tracking-tight">
-                Connect with Mohamed Sharawi
+                {t.contact.title}
               </h2>
 
             </div>
@@ -86,7 +91,7 @@ export default function ContactSection() {
                   <FacebookIcon className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-[#6E6459] uppercase font-bold">Official Facebook</div>
+                  <div className="text-xs font-mono text-[#6E6459] uppercase font-bold">{t.contact.facebook}</div>
                   <div className="text-base font-bold font-mono text-[#1C1917] group-hover:text-[#1877F2]">
                     Larimar Resort
                   </div>
@@ -103,7 +108,7 @@ export default function ContactSection() {
                   <InstagramIcon className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-[#6E6459] uppercase font-bold">Official Instagram</div>
+                  <div className="text-xs font-mono text-[#6E6459] uppercase font-bold">{t.contact.instagram}</div>
                   <div className="text-base font-bold font-mono text-[#1C1917] group-hover:text-[#E4405F]">
                     @larimarresort
                   </div>
@@ -120,7 +125,7 @@ export default function ContactSection() {
                   <YoutubeIcon className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-[#6E6459] uppercase font-bold">Official YouTube</div>
+                  <div className="text-xs font-mono text-[#6E6459] uppercase font-bold">{t.contact.youtube}</div>
                   <div className="text-base font-bold font-mono text-[#1C1917] group-hover:text-[#FF0000]">
                     Larimar Resort
                   </div>
@@ -140,16 +145,16 @@ export default function ContactSection() {
                   <CheckCircle className="w-10 h-10" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#1C1917]">
-                  Enquiry Submitted!
+                  {t.contact.submittedTitle}
                 </h3>
                 <p className="text-sm text-[#6E6459] max-w-md mx-auto">
-                  Thank you, <strong className="text-[#1C1917]">{formData.name || "Valued Client"}</strong>. Mohamed Sharawi will respond directly to your enquiry.
+                  {t.contact.submittedText1} <strong className="text-[#1C1917]">{formData.name || t.contact.valuedClient}</strong>{t.contact.submittedText2}
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="mt-4 px-6 py-2.5 rounded bg-[#1C1917] text-white text-xs font-mono font-bold uppercase"
                 >
-                  Send Another Message
+                  {t.contact.btnAnother}
                 </button>
               </div>
             ) : (
@@ -157,21 +162,21 @@ export default function ContactSection() {
                 
                 <div>
                   <div className="text-xs font-mono text-[#C85A32] font-bold uppercase tracking-wider mb-1">
-                    Book Private Consultation
+                    {t.contact.formTag}
                   </div>
                   <h3 className="text-xl font-bold text-[#1C1917]">
-                    Send Direct Inquiry to Mohamed Sharawi
+                    {t.contact.formTitle}
                   </h3>
                 </div>
 
                 <div>
                   <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-1">
-                    Your Full Name:
+                    {t.contact.labelName}
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Enter your full name here"
+                    placeholder={t.contact.placeholderName}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full p-3 rounded border border-[#E8E2D9] bg-[#FAF8F5] focus:bg-[#FFFDF9] focus:outline-none focus:border-[#C85A32] text-sm text-[#1C1917]"
@@ -180,12 +185,12 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-1">
-                    Phone Number / Email Address:
+                    {t.contact.labelContact}
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Enter your phone number or email address here"
+                    placeholder={t.contact.placeholderContact}
                     value={formData.contactInfo}
                     onChange={(e) => setFormData({ ...formData, contactInfo: e.target.value })}
                     className="w-full p-3 rounded border border-[#E8E2D9] bg-[#FAF8F5] focus:bg-[#FFFDF9] focus:outline-none focus:border-[#C85A32] text-sm text-[#1C1917]"
@@ -194,7 +199,7 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-1">
-                    Project Community Interest:
+                    {t.contact.labelProject}
                   </label>
                   <div className="relative" ref={dropdownRef}>
                     <div 
@@ -202,14 +207,14 @@ export default function ContactSection() {
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                       <span className={formData.projectInterest ? "text-[#1C1917]" : "text-[#A89F91]"}>
-                        {PROJECT_OPTIONS.find(opt => opt.value === formData.projectInterest)?.label || "Select a project..."}
+                        {projectOptions.find(opt => opt.value === formData.projectInterest)?.label || t.contact.selectPlaceholder}
                       </span>
                       <ChevronDown className={`w-4 h-4 text-[#C85A32] transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
                     </div>
                     
                     {dropdownOpen && (
                       <div className="absolute z-10 w-full mt-2 bg-[#FFFDF9] border border-[#E8E2D9] rounded-lg shadow-xl max-h-60 overflow-y-auto scrollbar-hide">
-                        {PROJECT_OPTIONS.map((option) => {
+                        {projectOptions.map((option) => {
                           const isSelected = formData.projectInterest === option.value;
                           return (
                             <div
@@ -233,11 +238,11 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-1">
-                    Your Requirements / Questions:
+                    {t.contact.labelMessage}
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="Enter your requirements or questions here"
+                    placeholder={t.contact.placeholderMessage}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full p-3 rounded border border-[#E8E2D9] bg-[#FAF8F5] focus:bg-[#FFFDF9] focus:outline-none focus:border-[#C85A32] text-sm text-[#1C1917]"
@@ -249,7 +254,7 @@ export default function ContactSection() {
                   className="w-full py-4 rounded-lg bg-[#C85A32] hover:bg-[#B44B24] text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl"
                 >
                   <Send className="w-4 h-4" />
-                  Submit & Open Direct WhatsApp
+                  {t.contact.btnSubmit}
                 </button>
 
               </form>

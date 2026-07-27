@@ -20,9 +20,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Mohamed Sharawi | Sales Supervisor | Larimar Port Ghalib",
+  title: "Mohamed Sharawi | Sales Manager | Larimar Port Ghalib",
   description:
-    "Mohamed Sharawi - Sales Supervisor representing Larimar, the premier residential resort community in Port Ghalib, Marsa Alam, Egypt. Find your luxury villa, suite, or townhouse on the Red Sea coastline.",
+    "Mohamed Sharawi - Sales Manager representing Larimar, the premier residential resort community in Port Ghalib, Marsa Alam, Egypt. Find your luxury villa, suite, or townhouse on the Red Sea coastline.",
   keywords: [
     "Mohamed Sharawi",
     "Larimar Port Ghalib",
@@ -35,11 +35,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Mohamed Sharawi" }],
   openGraph: {
-    title: "Mohamed Sharawi | Sales Supervisor | Larimar Port Ghalib",
+    title: "Mohamed Sharawi | Sales Manager | Larimar Port Ghalib",
     description: "Exclusive residential resort community in Port Ghalib, Marsa Alam.",
     type: "website",
   },
 };
+
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export default function RootLayout({
   children,
@@ -51,7 +53,7 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.variable} ${spaceGrotesk.variable} antialiased bg-[#FAF8F5] text-[#1C1917]`}
       >
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

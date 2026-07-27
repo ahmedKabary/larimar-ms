@@ -3,7 +3,11 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function OfficesSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="offices" className="py-20 bg-[#FAF8F5] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -11,10 +15,10 @@ export default function OfficesSection() {
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#C85A32]/10 text-[#C85A32] font-mono text-xs font-bold uppercase tracking-widest">
-            Official Locations & Headquarters
+            {t.offices.tag}
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1C1917] tracking-tight">
-            Visit Mohamed Sharawi in Port Ghalib
+            {t.offices.title}
           </h2>
 
         </div>
@@ -29,10 +33,10 @@ export default function OfficesSection() {
               <div className="flex items-center justify-between border-b border-[#E8E2D9] pb-4 mb-6">
                   <div>
                     <h3 className="text-xl font-bold text-[#1C1917]">
-                      Sales Office
+                      {t.offices.cardTitle}
                     </h3>
                     <span className="text-xs font-mono text-[#C85A32] font-semibold">
-                      PORT GHALIB CITY HEAD OFFICE
+                      {t.offices.cardSubtitle}
                     </span>
                   </div>
               </div>
@@ -40,12 +44,12 @@ export default function OfficesSection() {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div>
-                    <div className="text-xs font-mono font-bold text-[#6E6459] uppercase">Address</div>
+                    <div className="text-xs font-mono font-bold text-[#6E6459] uppercase">{t.offices.addressLabel}</div>
                     <div className="text-base font-bold text-[#1C1917] mt-0.5">
-                      Marina Promenade, Office No. 51-015B
+                      {t.offices.addressValue}
                     </div>
                     <div className="text-sm text-[#4A443E]">
-                      Port Ghalib City H.O., Red Sea, Egypt
+                      {t.offices.addressSub}
                     </div>
                   </div>
                 </div>
@@ -59,14 +63,12 @@ export default function OfficesSection() {
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded bg-[#1C1917] hover:bg-[#C85A32] text-white font-bold flex items-center gap-1.5 transition-colors"
               >
-                <span>View Map</span>
+                <span>{t.offices.btnViewMap}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
 
           </div>
-
-
 
         </div>
 
